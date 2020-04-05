@@ -1,5 +1,6 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
+import Login from "@/pages/Login.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
@@ -10,10 +11,11 @@ import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 
 const routes = [
+  { path: "/", component: Login },
   {
-    path: "/",
+    path: "/admin",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/admin/dashboard",
     children: [
       {
         path: "dashboard",
