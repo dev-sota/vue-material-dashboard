@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import router from "@/routes/routes.js";
+
 export default {
   name: "App",
   data() {
@@ -53,6 +55,7 @@ export default {
       setTimeout(() => {
         this.loading = false;
       }, 5000);
+      router.push({ path: "/admin" });
     }
   }
 };
