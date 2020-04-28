@@ -25,6 +25,9 @@ import router from "./routes/routes";
 import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
 import Notifications from "./components/NotificationPlugin";
+// API
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
@@ -45,6 +48,7 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+Vue.use(VueAxios, axios);
 
 /* eslint-disable no-new */
 new Vue({
