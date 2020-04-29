@@ -71,10 +71,6 @@ const router = new VueRouter({
           Cookies.get("accessToken") &&
           new Date() <= new Date(Cookies.get("accessTokenExpireDate"))
         ) {
-          console.log("********** DEBUG **********");
-          var c = Cookies.get();
-          console.log(c);
-          console.log("********** DEBUG **********");
           next();
         } else {
           router.push({ path: "/admin/login" });
