@@ -1,4 +1,5 @@
 import VueRouter from "vue-router";
+import Cookies from "js-cookie";
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Login from "@/pages/Login.vue";
 import Dashboard from "@/pages/Dashboard.vue";
@@ -64,7 +65,21 @@ const router = new VueRouter({
           name: "Upgrade to PRO",
           component: UpgradeToPRO
         }
-      ]
+      ],
+      beforeEnter(_to, _from, next) {
+        if (
+          Cookies.get("accessToken") &&
+          new Date() <= new Date(Cookies.get("accessTokenExpireDate"))
+        ) {
+          console.log("********** DEBUG **********");
+          var c = Cookies.get();
+          console.log(c);
+          console.log("********** DEBUG **********");
+          next();
+        } else {
+          router.push({ path: "/admin/login" });
+        }
+      }
     }
   ]
 });

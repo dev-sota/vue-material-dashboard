@@ -49,13 +49,34 @@ export default {
   },
   methods: {
     auth() {
-      // your code to login user
-      // this is only for example of loading
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 5000);
-      router.push({ path: "/admin" });
+      this.axios
+        .get("https://jsondata.okiba.me/v1/json/Ia5JX200429010252")
+        // .post("{{host}}/api/v1/sessions", {
+        //   email: this.login.email,
+        //   password: this.login.password
+        // })
+        .then(response => {
+          this.$Cookies.set("accessToken", response.data.access_token, {
+            expires: 5 / 1440 //5min
+          });
+          this.$Cookies.set(
+            "accessTokenExpireDate",
+            response.data.access_token_expire_date,
+            {
+              expires: 5 / 1440 //5min
+            }
+          );
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+          }, 5000);
+          router.push({ path: "/admin" });
+        })
+        .catch(error => {
+          this.dangerNotify(
+            "The login attempt failed. Either the user ID or password is invalid."
+          );
+        });
     }
   }
 };

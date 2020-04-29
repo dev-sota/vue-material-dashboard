@@ -28,6 +28,7 @@ import Notifications from "./components/NotificationPlugin";
 // API
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Cookies from "js-cookie";
 
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
@@ -42,6 +43,7 @@ import Chartist from "chartist";
 // });
 
 Vue.prototype.$Chartist = Chartist;
+Vue.prototype.$Cookies = Cookies;
 
 Vue.use(VueRouter);
 Vue.use(MaterialDashboard);
